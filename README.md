@@ -5,7 +5,7 @@ This is my solution the the [word chains ruby quiz](http://web.archive.org/web/2
 #### Description
 A script that finds a chain of words from one word to another, where each word
 in the chain is a dictionary word, and differs form the previous word by exactly one letter.
-Returns false if no chain exists.  My algorithm uses a bredth first search approach to solve the problem
+Returns false if no chain exists.  My algorithm uses a breadth first search approach.
 
 Example:
 
