@@ -28,7 +28,7 @@ class WordChainer
   end
   
   def find_word_chain(start_word, end_word)
-    return if start_word.length != end_word.length
+    return false if start_word.length != end_word.length
     
     @parents = { start_word => nil }
     current_words = [start_word]
@@ -38,17 +38,16 @@ class WordChainer
     
     candidates = Set.new(candidates - current_words)
     
-    until candidates.empty?
+    until current_words.empty?
       new_words = find_new_words(current_words, candidates)
       
       return find_path(end_word) if new_words.include?(end_word)
       
       candidates = Set.new(candidates.select{ |word| !new_words.include?(word) })    
       current_words = new_words 
-      
     end 
     
-    puts "there is no path"
+    false
   end
   
   
@@ -78,6 +77,6 @@ class WordChainer
         word_path << @parents[word_path.last]
       end
       
-      word_path.reverse
+      word_path.reverse[1..-1].join(" -> ")
     end 
 end
